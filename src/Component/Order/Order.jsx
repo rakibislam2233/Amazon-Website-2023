@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from 'react';
 import OderSummary from '../OderSummary/OderSummary';
-import { useLoaderData } from 'react-router-dom';
-import { getShoppingCart, removeFromDb } from '../../utilities/fakedb';
+import { Link, useLoaderData } from 'react-router-dom';
+import { deleteShoppingCart, getShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReviewItem from '../ReviewItem/ReviewItem';
@@ -28,6 +28,10 @@ const Order = () => {
         setCart(remaining)
         removeFromDb(id)
     }
+    const clearData = () => {
+        setCart([]);
+        deleteShoppingCart()
+    }
     return (
         <div className='w-full max-w-6xl mx-auto md:flex  justify-between gap-5 py-10'>
             <div className='space-y-4 p-3'>
@@ -36,7 +40,13 @@ const Order = () => {
                 }
             </div>
             <div className='md:p-3'>
-           <OderSummary  cart={cart}></OderSummary>
+           <OderSummary clearData={clearData}  cart={cart}>
+            <Link to={"/chakOut"}>
+            <div>
+            Procced ChackOut
+            </div>
+            </Link>
+           </OderSummary>
             </div>
         </div>
     );

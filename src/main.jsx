@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import OrderReview from './Component/OrderReview/OrderReview';
 import Inventory from './Component/Inventory/Inventory';
 import Login from './Component/Login/Login';
+import ChackOut from './Component/ChackOut/ChackOut';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         },{
             path:"login",
             element:<Login></Login>
+        },
+        {
+          path:"chakOut",
+          element:<ChackOut></ChackOut>
         }
     ]
   },

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Button from '../Button/Button';
 import OderSummary from '../OderSummary/OderSummary';
 import Product from '../Product/Product';
-import { addToDb } from '../../utilities/fakedb';
+import { ArrowRightIcon } from '@heroicons/react/24/solid'
+import { addToDb, deleteShoppingCart } from '../../utilities/fakedb';
 import { getShoppingCart } from '../../utilities/fakedb';
+import { Link } from 'react-router-dom';
 const Shop = () => {
     const [products,setproduct] = useState([]);
     const [cart,setcart] = useState([]);
@@ -43,6 +45,10 @@ const Shop = () => {
     const showAllData = ()=>{
             setShowAll(true);
     }
+    const clearData = () => {
+        setcart([])
+        deleteShoppingCart()
+    }
     return (
         <div className='w-full max-w-6xl mx-auto md:flex  justify-between gap-5 py-10'>
             <div className='border md:w-[80%] p-5 '>
@@ -60,7 +66,11 @@ const Shop = () => {
                 }
             </div>
             <div className='md:w-[30%] p-5'>
-               <OderSummary cart={cart}></OderSummary>
+               <OderSummary clearData={clearData} cart={cart}>
+                <Link  to={"/order"}>
+                <div className='flex gap-2 justify-center'>Review Order <ArrowRightIcon className='w-6 h-6'></ArrowRightIcon> </div>
+                </Link>
+               </OderSummary>
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import { TrashIcon } from '@heroicons/react/24/solid'
-const OderSummary = ({cart}) => {
+import { Link } from 'react-router-dom';
+const OderSummary = ({cart,clearData,children}) => {
     let totalPrice = 0;
     let totalShipping = 0;
     let quantity = 0;
@@ -22,8 +23,10 @@ const OderSummary = ({cart}) => {
                 <p className='font-semibold'>Tax : ${tax.toFixed(2)}</p>
                 <h2 className='text-xl font-semibold'>Grand Total: ${grandTotal.toFixed(2)} </h2>
                <div className='mx-auto space-y-4'>
-               <button className='py-2 w-full font-semibold rounded flex justify-center gap-2  text-white px-5 bg-rose-500'>Clear Cart <TrashIcon className='w-6 h-6'></TrashIcon></button> 
-              <button className='py-2 w-full font-semibold rounded  text-white px-5 bg-amber-500'>Review Order</button>
+               <button onClick={clearData} className='mb-2 py-2 w-full font-semibold rounded flex justify-center gap-2  text-white px-5 bg-rose-500'>Clear Cart <TrashIcon className='w-6 h-6'></TrashIcon></button> 
+             <Link >
+             <button className='py-2 w-full font-semibold rounded  text-white px-5 bg-amber-500'>{children}</button>
+             </Link>
                </div>
              </div>
         </>
