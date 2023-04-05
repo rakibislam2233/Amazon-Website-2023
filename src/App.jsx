@@ -6,7 +6,8 @@ import Header from './Component/Header/Header'
 import { Outlet } from 'react-router-dom'
 import Shop from './Component/Shop/Shop'
 import Home from './Component/Home/Home'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

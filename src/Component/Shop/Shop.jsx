@@ -59,7 +59,7 @@ const Shop = () => {
                     </div>
                 }
             </div>
-            <div className='md:w-[20%]'>
+            <div className='md:w-[30%] p-5'>
                <OderSummary cart={cart}></OderSummary>
             </div>
         </div>

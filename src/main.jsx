@@ -8,6 +8,8 @@ import {
 import './index.css'
 import Home from './Component/Home/Home';
 import Order from './Component/Order/Order';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import OrderReview from './Component/OrderReview/OrderReview';
 import Inventory from './Component/Inventory/Inventory';
 import Login from './Component/Login/Login';
@@ -22,7 +24,8 @@ const router = createBrowserRouter([
           element:<Home></Home>
         },{
             path:"order",
-            element:<Order></Order>
+            element:<Order></Order>,
+            loader:()=>fetch('products.json')
         },{
             path:"orderReview",
             element:<OrderReview></OrderReview>
