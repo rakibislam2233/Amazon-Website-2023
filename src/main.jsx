@@ -14,6 +14,8 @@ import OrderReview from './Component/OrderReview/OrderReview';
 import Inventory from './Component/Inventory/Inventory';
 import Login from './Component/Login/Login';
 import ChackOut from './Component/ChackOut/ChackOut';
+import SignUp from './Component/SignUp/SignUp';
+import UserProvider from './Component/Provider/UserProvider';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
             element:<Login></Login>
         },
         {
+          path:"/signUp",
+          element:<SignUp></SignUp>
+        },
+        {
           path:"chakOut",
           element:<ChackOut></ChackOut>
         }
@@ -46,7 +52,9 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
 <React.StrictMode>
-    <RouterProvider router={router} />
+   <UserProvider>
+   <RouterProvider router={router} />
+   </UserProvider>
   </React.StrictMode>
 
 )

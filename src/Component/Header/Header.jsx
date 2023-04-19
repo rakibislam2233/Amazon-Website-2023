@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import HeroArea from '../HeroArea/HeroArea';
 import NavBar from '../NavBar/NavBar';
 import Shop from '../Shop/Shop';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../Provider/UserProvider';
 
 const Header = () => {
+    const {user,logOut} = useContext(UserContext);
+    console.log(logOut);
+    const handelLogOut = ()=>{
+        logOut()
+        .then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
     return (
         <>
        <nav className='bg-[#1C2B35] z-50 md:h-20  '>
@@ -16,6 +27,15 @@ const Header = () => {
                     <li><Link to="/orderReview">Order Review</Link></li>
                     <li><Link to="/inventory">Manage Inventory</Link></li>
                     <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/signUp">Sign Up</Link></li>
+                    <li>
+                    {
+                        user? <div>
+                            <h3>{user.email}</h3>
+                            <button onClick={handelLogOut} className='btn btn-warning'>LogOut</button>
+                        </div>: <Link to={'/login'}><button className='btn btn-info'>Login</button></Link> 
+                    }
+                    </li>
                 </ul>
             </div>
         </nav>
